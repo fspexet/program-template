@@ -1,0 +1,41 @@
+
+\newcommand{\Bilder}[1]{\begin{center}\includegraphics[width = 0.9\textwidth]{#1}\end{center}}
+
+
+%\foto{bildadress j{\"a}mf{\"o}rt med main.tex}{Namn}{Post}
+\newcommand\foto[3]{%
+\begin{minipage}[t]{0.24\textwidth}
+\parbox[c][3.2cm][c]{\textwidth}{\centering\adjincludegraphics[height=3.2cm]{#1}}\\[5pt]
+\parbox[c][2.1\baselineskip][c]{\textwidth}{\centering\bf\small#2}\\[3pt]
+%\raggedright #3
+\centering\footnotesize #3
+\vspace{0.7\baselineskip}
+\end{minipage}\hfil%
+}
+
+
+\newcommand\openquote{
+	\tikz[overlay,xshift=-15pt,yshift=0pt]
+		\node {\fontsize{40}{40}\selectfont\bf``};
+	\kern0pt
+}
+\newcommand\closequote{
+	\tikz[overlay,anchor=north,xshift=15pt,yshift=0pt]
+		\node {\fontsize{40}{40}\selectfont\bf''};
+}
+
+\newcommand\funnyquote[1]{
+\begin{quote}
+\openquote
+{\large\bf#1}\hfill
+\raisebox{\baselineskip}[0pt]{\closequote}
+\end{quote}
+}
+
+\newcommand{\citat}[1]{“#1”}
+
+\newcommand{\rubrik}[1]{{\begin{center}\Huge\sc#1\end{center}}\par}
+
+\newcommand{\underrubrik}[1]{{\begin{center}\huge\sc#1\end{center}}\par}
+
+\newcommand{\inlinerubrik}[1]{\large{\sc#1}}

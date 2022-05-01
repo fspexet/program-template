@@ -1,0 +1,92 @@
+\newcommand{\multicolsongtitle}[1]{\begin{center}\Large #1\end{center}\par}
+
+\newdimen\songmarginwidth
+\newdimen\songtextwidth
+\newdimen\songmarginywidth
+\newdimen\songtextywidth
+
+\newcommand\multicolinputsong[2][\baselineskip]{%
+	\begingroup
+	\typeout{inputsong #2}
+	\parindent=0pt
+	\parskip=0pt
+	\newread\songfile
+	\immediate\openin\songfile=#2
+	%
+	\ifeof\songfile
+	\typeout{Could not open #2}
+	\else
+	%
+	\endlinechar=-1
+	\read\songfile to \titleline
+	\readline\songfile to \melodyline
+	\readline\songfile to \authorline
+	\readline\songfile to \singerline
+	\readline\songfile to \arrline
+	\readline\songfile to \spacerline
+	%
+	\songmarginwidth=2cm
+	\songtextwidth=\dimexpr\textwidth-\songmarginwidth
+	\songmarginywidth=3cm
+	\songtextywidth=2cm
+	%
+	\needspace{5cm}%
+	\multicolsongtitle{\expandafter\string\titleline}\par%
+	\hbox to \columnwidth{%
+		\hbox to \songmarginwidth{\hfill\sc\footnotesize Melodi\hspace{5pt}}%
+		\hbox to \songtextywidth{\footnotesize\expandafter\string\melodyline}%
+	%	\hfill}%
+	}\nobreak%
+	\hbox to \columnwidth{%
+		\hbox to \songmarginwidth{\hfill\sc\footnotesize Förf.\hspace{5pt}}%
+		\hbox to \songtextwidth{\footnotesize\expandafter\string\authorline\hfill}%
+	}\nobreak%
+	\hbox to \columnwidth{%
+		\hbox to \songmarginwidth{\hfill\sc\footnotesize Medv.\hspace{5pt}}%
+		\hbox to \songtextwidth{\footnotesize\expandafter\string\singerline\hfill}%
+	}\nobreak%
+	\hbox to \columnwidth{%
+		\hbox to \songmarginwidth{\hfill\sc\footnotesize Arr\hspace{5pt}}%
+		\hbox to \songtextywidth{\footnotesize\expandafter\string\arrline}%
+	}\nobreak%
+	%Melodi: \textit{}\par%
+	%F�rfattare: \textit{\expandafter\string\authorline}\par%
+	%
+	\IfStrEq{\spacerline}{}{}{%
+		\fbox{%
+			\parbox{0.9\textwidth}{Potential error in \string#2: spacer line not empty.}%
+		}\par%
+	}%
+	%
+
+	\begin{multicols}{2}
+
+	\vspace{\baselineskip}%
+	\fboxsep=0pt%
+	\loop\unless\ifeof\songfile%
+		\readline\songfile to \songline%
+		\IfStrEq{\songline}{}{%
+			\pagebreak[0]\vspace{#1}%
+		}{%
+			\IfSubStr{\songline}{:}{%
+				\StrBefore{\songline}{:}[\before]%
+				\StrBehind{\songline}{:}[\behind]%
+				\hbox to \textwidth{%
+					\hbox to \songmarginwidth{\hfill\small\sc\before\hspace{5pt}}%
+					\hbox to \songtextwidth{\ignorespaces\behind\hfill}%
+				}\nobreak%
+			}{%
+				\hbox to \textwidth{%
+					\hspace{\songmarginwidth}\ignorespaces\songline\hfill%
+				}\nobreak%
+			}%
+		}%
+	\repeat%
+	\fi%
+	%
+
+	\end{multicols}
+
+	\closein\songfile%
+	\endgroup
+}

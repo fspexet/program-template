@@ -1,0 +1,12 @@
+\newlength\watermarkbleed
+\watermarkbleed=0.1cm
+\newlength\watermarkxoffset
+\newlength\watermarkyoffset
+\newlength\watermarkwidth
+\newlength\watermarkheight
+\watermarkxoffset=\dimexpr -1.75cm-\watermarkbleed
+\watermarkyoffset=\dimexpr 1.5cm-\paperheight-\watermarkbleed
+\watermarkwidth=\dimexpr \paperwidth+2\watermarkbleed
+\watermarkheight=\dimexpr \paperheight+2\watermarkbleed
+\leftwatermark{\def\unitlength{}\put(\watermarkxoffset,\watermarkyoffset){\includegraphics[width=\watermarkwidth,height=\watermarkheight]{../Bilder/background_l3.png}}}
+\rightwatermark{\def\unitlength{}\put(\watermarkxoffset,\watermarkyoffset){\includegraphics[width=\watermarkwidth,height=\watermarkheight]{../Bilder/background_r3.png}}}

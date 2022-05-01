@@ -1,0 +1,104 @@
+\documentclass[10pt,twoside]{article}
+
+\input{Settings/packages}
+
+\input{Settings/geometry_settings}
+
+\input{Settings/new_commands}
+
+% \input{watermark_settings}  % Settings for watermarks. Currently not used
+
+
+\begin{document}
+
+
+\pagestyle{empty}
+%\pagenumbering{gobble}
+
+%%% Framsida
+%\thiswatermark{}
+\includepdf[width = 158mm]{Bilder/OmslagFram.pdf} %15.8cm bred
+\pagestyle{fotfil}
+%\pagenumbering{arabic}
+
+%%% Karakt{\"a}rsbeskrivningar	1
+%%\thiswatermark{}
+\input{AndraTexter/KaraktarerFront}
+\newpage
+\input{AndraTexter/TitlePage}
+\newpage
+
+
+%%% V{\"a}lkommen
+\input{AndraTexter/Tant}
+\newpage
+
+
+%%% Meny
+\input{AndraTexter/Meny}
+
+
+\newpage
+\input{AndraTexter/Rebus}
+
+
+%%% Akt 1
+\newpage
+\input{Akt1/akt1}
+\newpage
+
+
+%%% Inrop
+\input{AndraTexter/Inrop}
+\newpage
+
+\input{AndraTexter/Positioner}
+\newpage
+\
+
+\
+
+%%% Akt 2
+\input{Akt2/akt2}
+\newpage
+
+%%% Tidslinje
+\input{AndraTexter/Reklam}
+\newpage
+
+
+%%% Akt 3
+\input{Akt3/akt3}
+\newpage
+
+%%% {\aa}rets spexare
+\input{AndraTexter/Spexare}
+%\newpage
+%\input{AndraTexter/RitaEgenStjarnbild}
+\newpage
+%%% Gamla spex
+\input{AndraTexter/TidigareSpex}
+\pagestyle{fotfil}
+
+\newpage
+\input{AndraTexter/Asplapp}
+\
+\input{AndraTexter/AsplappBaksida}
+\
+\newpage
+
+%\ \vfill Denna sida har avsiktligt l{\"a}mnats blank s{\aa} att ni ska kunna rita p{\aa} n{\aa}got mer permanent {\"a}n duken
+%\newpage
+
+
+%%% Karakt{\"a}rsbeskrivningar	2
+%\thiswatermark{}
+\input{AndraTexter/KaraktarerBack}
+\newpage
+\pagestyle{empty}
+
+
+%%% Baksida
+%\thiswatermark{}
+\includepdf[width = 158mm]{Bilder/OmslagBak.pdf}
+\end{document}

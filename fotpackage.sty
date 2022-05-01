@@ -1,0 +1,100 @@
+
+
+%%%%%%%%%% Sidfötter %%%%%%%%%%
+
+%% \fotstil
+%
+% Detta kommando används för att formattera inlästa sidfötter i de sidlayouter
+% som skapas av \fotfil. Detta kommando kan ta en parameter eller ingen alls,
+% men aldrig flera.
+\let\fotstil\textit
+
+%% \fotstil@yttre
+%
+% Detta kommando används för att formattera inlästa sidfötter i de sidlayouter
+% som skapas av \fotfil. Detta kommando kan ta en parameter eller ingen alls,
+% men aldrig flera.
+%
+% Till skillnad från \fotstil som används innan sidfoten expanderas, så
+% appliceras detta kommando på varje rad (se \manus@fotstil nedan).
+\def\fotstil@yttre#1{#1}
+
+%% \manus@fotstil
+%
+% Detta kommando plockar isär en paragrafs rader och applicerar \fotstil@yttre
+% kommandot på varje rad för sig. Detta är till exempel användbart då
+% \fotstil@yttre är satt till \fbox, \underline eller dylikt.
+\def\manus@fotstil{%
+	\setbox0=\lastbox%
+	\ifvoid0%
+		\noindent\ignorespaces%
+	\else%
+		\unskip\unpenalty%
+		\begingroup\manus@fotstil\par\endgroup%
+		\hbox to 0.9\textwidth{\fotstil@yttre{\unhbox0}}%
+	\fi%
+}
+
+%% \fothar
+%
+% Detta kommando bestämmer sidfotstexten på sidan där kommandot specifierats. Den
+% aktiva fotfilen fortsätter som vanligt på nästa sida, såvida inte detta kommando
+% specifierats där också.
+\newcommand\fothar[1]{\gdef\manus@fothar{#1}}
+\fothar{}
+
+%% \fotfil[layoutnamn]{filnamn}
+%
+% Skapa en ny sidlayout med givet namn som läser sidfötter från den givna filen.
+% Sätt sedan den använda sidlayouten till den nyskapade.
+\newcommand\fotfil[2][fotfil]{%
+	\@ifundefined{ps@#1}{%
+		\expandafter\newread\csname ps@#1@read\endcsname%
+		\expandafter\openin\csname ps@#1@read\endcsname=#2%
+		\def\default@fot{\hfil\thepage}%
+		\expandafter\def\csname ps@#1\endcsname{%
+			\def\@evenfoot{%
+				\ifx\manus@fothar\empty%
+					\ifeof\csname ps@#1@read\endcsname%
+						\def\@sidfot{}%
+					\else%
+						\expandafter\read\csname ps@#1@read\endcsname to \@sidfot%
+					\fi%
+				\else%
+					\def\@sidfot{\manus@fothar}%
+				\fi%
+				\thepage%
+				\hfill%
+				\parbox{0.9\textwidth}{%
+					\raggedleft%
+					\fotstil\@sidfot%
+					\par\manus@fotstil%
+				}%
+				\fothar{}%
+			}%
+			\def\@oddfoot{%
+				\ifx\manus@fothar\empty%
+					\ifeof\csname ps@#1@read\endcsname%
+						\def\@sidfot{}%
+					\else%
+						\expandafter\read\csname ps@#1@read\endcsname to \@sidfot%
+					\fi%
+				\else%
+					\def\@sidfot{\manus@fothar}%
+				\fi%
+				\parbox{0.9\textwidth}{%
+					\raggedright%
+					\fotstil\@sidfot%
+					\par\manus@fotstil%
+				}%
+				\hfill%
+				\thepage%
+				\fothar{}%
+			}%
+		}%
+		\pagestyle{#1}%
+	}{%
+		\errmessage{Detta layoutnamn används redan.}%
+	}%
+}
+

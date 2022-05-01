@@ -1,0 +1,24 @@
+
+
+\begingroup
+\rubrik{\Huge\sc Kvällens meny}
+
+\vfil
+
+\newcommand\blockA[1]{\parbox[c][0.23\textheight][c]{0.3\textwidth}{\centering #1}}
+\newcommand\blockB[1]{\parbox[c][0.23\textheight][c]{0.6\textwidth}{\raggedright #1}}
+
+\blockA{\adjincludegraphics[width=0.3\textwidth]{Bilder/massgrav.jpg}}
+%\hfill
+\blockB{\textbf{Förrätt: Toast med gubbröra}\\ När ridån går upp kanske ni kommer få se en gammal klassisk monark. När förrätten serveras kommer ni att få se en gammal klassiker från buffébordet, serverat på en knapprig toast. För vegetarianer bjuds det istället på svamp.}
+\vfil
+\blockB{\textbf{Huvudrätt: Köttfärslimpa med potatismos och klassiska tillbehör}\\ Köttfärslimpa lär ha ätits redan på 400-talet enligt en romersk kokbok, så det är inte osannolikt att karaktärerna i årets spex ätit köttfärslimpa -- men sannolikt inte med lika god/billig kryddning som vi kan njuta av idag. De som vill bryta med traditionen får istället en slags fylld växt.}
+%\hfill
+\blockA{\adjincludegraphics[height=0.25\textheight]{Bilder/apicius.jpg}}
+\vfil
+\blockA{\adjincludegraphics[width=0.3\textwidth]{Bilder/apples.jpg}}
+%\hfill
+\blockB{\textbf{Efterrätt: Äppelpaj och vaniljsås}\\ Enligt supersäkra källor lär till och med Adam och Eva ha ätit äpplen, men exakt när man la till paj till receptet vet vi inte.}
+
+
+\endgroup
