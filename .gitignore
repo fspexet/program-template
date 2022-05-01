@@ -1,0 +1,9 @@
+# Ignorera tex-automatgenererade filer
+*.pdf
+
+*.aux  
+*.blg  
+*.bbl  
+*.log  
+*.synctex.gz  
+
