@@ -1,9 +1,11 @@
-Framtiden
-Electric Light Orchestra -- Mr. Blue Sky
-Fredrik ``Greis" Albers, Lukas Enarsson, Daniele ``Dante'' Evangelista, Haldo Ryberg, Ethel Fridell
-Einstein, Kalle, Laplace
-Gustav Axelsson
+Kuplett 1.1
+Låtnamn
+Textskrivare
+Karaktärer
+Arrangör
 
+
+Sample-text:
 
 Ka. / Ei.: Solen lyser högt i skyn!
 Åh vilken vacker dag!

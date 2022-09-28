@@ -11,12 +11,12 @@
 \newlength\AFiveHeight
 \setlength{\AFiveHeight}{21cm}
 
-\usepackage[paperwidth=15.8cm,%=\AFiveWidth+2*\bleed %The size of the document, this allows for cropping to the actual document size determined by layoutwidth pch layoutheight below
+\usepackage[paperwidth=15.8cm,%=\AFiveWidth+2*\bleed %The size of the document, this allows for cropping to the actual document size determined by layoutwidth and layoutheight below
             paperheight=22cm,
             layoutwidth=14.8cm, %The width the printed materal will have. Setting this to exactly A5 width will risk that some cuts will be off and we'll get white edges around the front and back page. Thus TT recommends setting this to include bleed, i.e. the same as paperwidth above. Same argument goes for layoutheight below.
             layoutheight=21cm, %A5-paper height
-            %layouthoffset=0.0cm,
-            %layoutvoffset=0.0cm,
+            layouthoffset=0.5cm,
+            layoutvoffset=0.75cm,
             top=1.5cm,
             bottom=3cm,
             left=1.75cm,
@@ -24,9 +24,6 @@
             %marginparwidth=4cm,
             %marginparsep=0.4cm
             ]{geometry}% För att fixa bleed-marginaler (mer info, via exempel, här: https://3d.bk.tudelft.nl/ken/en/2016/03/20/self-publishing-your-latex-thesis.html )
-
-
-
 
 
 \parindent=0pt
