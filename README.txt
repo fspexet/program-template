@@ -43,6 +43,9 @@ I denna filen hämtas alla bilder på spexare med följande kommando:
 \foto{<sökväg till bildfil>}{<namn på spexare>}{<post(er) i spexet>}
 Notera att sökvägen kan vara absolut eller relativ till positionen av main.tex.
 
+Bilder på spexare:
+Bilderna ska vara i format 2:3 och rekommenderas att vara i porträttorientering.
+
 
 forfilen:
 
